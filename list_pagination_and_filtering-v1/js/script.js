@@ -6,19 +6,35 @@ FSJS project 2 - List Filter and Pagination
 const list = document.querySelectorAll('li');
 const itemsPerPage = 10;
 
-function searchList() {
-	let newDiv = document.createElement("div");
-	let newInput = document.createElement("input");
-	let newButton = document.createElement("button");
-	newDiv.className = "student-search";
-	document.querySelector(".page-header").appendChild(newDiv);
-	document.querySelector(".student-search").appendChild(newInput);
-	document.querySelector(".student-search").appendChild(newButton);
-	newButton.textContent = "Search";
-	newInput.placeholder = "Search for students...";
+
+let newDiv = document.createElement("div");
+let newInput = document.createElement("input");
+let newButton = document.createElement("button");
+newDiv.className = "student-search";
+document.querySelector(".page-header").appendChild(newDiv);
+document.querySelector(".student-search").appendChild(newInput);
+document.querySelector(".student-search").appendChild(newButton);
+newButton.textContent = "Search";
+newInput.placeholder = "Search for students...";
+newInput.type = "text";
+newInput.id = "search-input";
+let searchInput = document.querySelector("#search-input");
+console.log(list[0].textContent);
+function searchFun(searchInput, list) {
+	console.log(searchInput);
+	console.log(searchInput.value);
+	for (let i = 0; i < list.length; i += 1) {
+		list[i].style.display = 'none';
+		if (searchInput.value.length != 0 && list[i].textContent.toLowerCase().indexOf(searchInput.value.toLowerCase()) > -1) {
+			list[i].style.display = 'list-item';
+			console.log("I've found it");
+		}
+	}
 	
 }
+
 function showPage(list, page) {
+
 	const startInd = (page * itemsPerPage) - itemsPerPage;
 	const endInd = page * itemsPerPage;
 	for (let i = 0; i < list.length; i += 1) {
@@ -59,6 +75,16 @@ function appendPageLinks(list) {
 	
 }
 
-searchList();
 showPage(list, 1);
 appendPageLinks(list);
+newButton.addEventListener('click', (e) => {
+	event.preventDefault();
+	searchFun(searchInput, list);
+	console.log('Submit function is working!');
+});
+
+newInput.addEventListener('keyup', (e) => {
+	event.preventDefault();
+	searchFun(searchInput, list);
+	console.log("Keylog is functioning");
+});
