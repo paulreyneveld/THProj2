@@ -3,12 +3,11 @@ Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
 
-// Constants collect the two variables required to meet the baseline requirements of this project.
+// Constants collect the two variables required to meet the baseline requirements for this project.
 const list = document.querySelectorAll('li');
 const itemsPerPage = 10; // This number can be altered to set pagination length.
 
 // The following outputs HTML to the page to allow for the usage of a search bar.
-// I've left it in because I succeeded at part of the extra credit. . . .
 const newDiv = document.createElement("div");
 const newInput = document.createElement("input");
 const newButton = document.createElement("button");
@@ -66,14 +65,7 @@ function appendPageLinks(list) {
 			e.target.className = "active";
 		});
 	}
-	
 }
-
-// What follows is my attempt at the extra credit. 
-// I wasn't able to get the pagination or 'item not found'
-// aspect of the project working, and while I love to exceed
-// expecations, I've been banging my head against a wall and 
-// need to move on. 
 
 // Obtains search criteria from the DOM 
 let searchInput = document.querySelector("#search-input ");
@@ -93,8 +85,7 @@ function searchFun(searchInput, list) {
 		else if (searchInput.value.length == 0) {
 			showPage(list, 1);
 		}
-	}
-	
+	}	
 }
 
 // Calls showPage function.
