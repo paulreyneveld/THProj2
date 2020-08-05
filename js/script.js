@@ -1,8 +1,3 @@
-/******************************************
-Treehouse Techdegree:
-FSJS project 2 - List Filter and Pagination
-******************************************/
-
 // Constants collect the two variables required to meet the baseline requirements for this project.
 const list = document.querySelectorAll('li');
 const itemsPerPage = 10; // This number can be altered to set pagination length.
@@ -43,16 +38,16 @@ function showPage(list, page) {
 function appendPageLinks(list) {
 	numOfLinks = Math.ceil(list.length / itemsPerPage);
 
-	let li = document.createElement("LI");
-	let newDiv = document.createElement("DIV");
+	let li = document.createElement("li");
+	let newDiv = document.createElement("div");
 	
 	newDiv.className = "pagination";
 	document.querySelector(".page").appendChild(newDiv);
-	let newUl = document.createElement("UL");
+	let newUl = document.createElement("ul");
 	document.querySelector(".pagination").appendChild(newUl);
 	for (let i = 1; i <= numOfLinks; i += 1) {
 		newUl.appendChild(li);
-		let a = document.createElement("A");
+		let a = document.createElement("a");
 		li.appendChild(a);
 		a.href = "#";
 		a.innerHTML = i;
